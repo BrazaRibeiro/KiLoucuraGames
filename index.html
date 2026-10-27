@@ -280,8 +280,9 @@ footer a{color:#fff; text-decoration:none} footer a:hover{color:var(--yellow); t
 /* ===== Fotos reais (img/) com desenho de reserva ===== */
 /* A foto só aparece quando o arquivo existe. Sem arquivo, fica o desenho. */
 .photo{position:relative; overflow:hidden}
-.photo > img{display:none; width:100%; height:100%; object-fit:cover}
-.photo.has-img > img{display:block}
+/* A foto fica transparente até carregar. Não usar display:none: o navegador não carrega imagem lazy escondida. */
+.photo > img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0}
+.photo.has-img > img{opacity:1}
 .photo.has-img > .ph-art{display:none}
 .card .art.photo{padding:0}
 .card .art.photo.has-img{background:#000}
