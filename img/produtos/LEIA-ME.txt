@@ -1,0 +1,3 @@
+Fotos dos produtos. Nomes exatos estao em img/LEIA-ME.txt (pasta de cima).
+Formato sugerido: JPG quadrado, 800x800, fundo limpo.
+Use fotos dos produtos reais da loja ou do Instagram @kiloucuragames.

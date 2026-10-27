@@ -1,0 +1,32 @@
+PASTA DE IMAGENS — Ki Loucura Games
+
+Solte os arquivos aqui com estes nomes exatos. Assim que o arquivo existir,
+a foto aparece sozinha no site. Enquanto nao existir, fica o desenho e nada quebra.
+
+Nesta pasta (img/):
+  logo.png          Logo da loja (quadrado, fundo transparente, 512x512)
+  assistencia.jpg   Foto da bancada / tecnico trabalhando
+  loja.jpg          Foto da fachada ou da vitrine da loja
+
+Na pasta img/produtos/ (de preferencia quadradas, 800x800, fundo limpo):
+  ps5.jpg
+  dualsense-ps5.jpg
+  xbox-series-x.jpg
+  controle-xbox.jpg
+  nintendo-switch.jpg
+  controle-classic.jpg
+  setup-gamer.jpg
+  pc-gamer.jpg
+  jogos-ps5.jpg
+  jogos-xbox.jpg
+  jogos-switch.jpg
+  controle-pro.jpg
+  headset.jpg
+  manutencao-console.jpg
+  conserto-controle.jpg
+  manutencao-pc.jpg
+
+MELHOR FONTE: fotos dos produtos reais da loja, tiradas pelo cliente, ou as
+que ja estao no Instagram @kiloucuragames. Sao fotos dele, entao nao tem
+problema de direito autoral. Foto de banco de imagens mostra produto que a
+loja pode nao ter, e foto tirada do site do fabricante tem dono.
