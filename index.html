@@ -302,6 +302,61 @@ footer a{color:#fff; text-decoration:none} footer a:hover{color:var(--yellow); t
 .about-photo{border:4px solid #000; border-radius:24px; box-shadow:10px 10px 0 #000; aspect-ratio:4/3; display:grid; place-items:center; background:var(--yellow); transform:rotate(-2deg)}
 .about-photo > .ph-art{width:80%; height:auto}
 @media (max-width:900px){ .about-grid{grid-template-columns:1fr} .about-photo{transform:none} }
+
+/* ===== Logo próprio (troca o desenho quando existe img/logo.png ou logo enviada no painel) ===== */
+.logo-img{display:none; object-fit:contain}
+html.tem-logo .logo-img{display:block}
+html.tem-logo .logo-svg{display:none}
+.brandmark .logo-img{width:48px; height:48px}
+.ft-brand .logo-img{width:96px; height:96px}
+.card .desc{font-size:14px; line-height:1.35; margin:2px 0 8px; opacity:.8}
+
+/* ===== Painel do lojista (demonstração) ===== */
+.adm-link{color:inherit; text-decoration:underline}
+.adm{position:fixed; inset:0; z-index:85; overflow:auto; background:var(--bg); color:var(--text); -webkit-overflow-scrolling:touch; padding-bottom:calc(48px + env(safe-area-inset-bottom,0px))}
+.adm [hidden]{display:none!important}
+.adm section{padding:0}
+.adm[hidden]{display:none}
+.adm-top{position:sticky; top:0; z-index:3; display:flex; align-items:center; flex-wrap:wrap; gap:8px 10px; padding:calc(10px + env(safe-area-inset-top,0px)) 16px 10px; background:#000; color:var(--yellow); border-bottom:4px solid var(--yellow)}
+.adm-top strong{font-family:var(--display); font-size:17px; margin-right:auto}
+.adm-top .btn{box-shadow:none}
+.adm-status{flex-basis:100%; font-size:13px; color:#9ff0b8; min-height:1.2em}
+.adm-status.erro{color:#ffb3b3}
+.adm-wrap{max-width:760px; margin:0 auto; padding:0 16px}
+.adm-demo{background:var(--yellow); color:#000; border:3px solid #000; border-radius:12px; padding:12px 14px; margin:16px 0; font-size:15px; line-height:1.4}
+.adm-login{background:var(--soft); border:3px solid #000; border-radius:14px; padding:18px; margin-top:8px}
+.adm-login h2{margin:0 0 12px; font-family:var(--display); font-weight:400}
+.adm-dica{display:block; font-size:13px; line-height:1.4; color:var(--muted); margin:6px 0 12px}
+.adm-tabs{margin:0 0 16px; gap:8px}
+.adm-tabs .chip{padding:10px 14px}
+.adm-box{background:var(--soft); border:3px solid #000; border-radius:14px; padding:14px; margin:0 0 14px}
+.adm-box h3{margin:0 0 6px; font-size:17px}
+.adm-box p{margin:0 0 10px}
+.adm-prod{border:3px solid #000; border-radius:14px; background:var(--surface); margin:12px 0 0; overflow:hidden}
+.adm-prod summary{list-style:none; display:flex; align-items:center; gap:12px; padding:10px 12px; min-height:68px; cursor:pointer}
+.adm-prod summary::-webkit-details-marker{display:none}
+.adm-prod[open] summary{border-bottom:2px solid #000; background:var(--soft)}
+.adm-thumb{width:64px; height:52px; flex:none; border:2px solid #000; border-radius:8px; background:var(--art,#FFD21F); display:grid; place-items:center}
+.adm-thumb .ph-art{width:80%; height:auto}
+.adm-pn{flex:1; min-width:0}
+.adm-pn b{display:block; font-size:16px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.adm-pn small{display:block; color:var(--muted); font-size:13px}
+.adm-chev{font-size:20px; transition:transform .15s}
+.adm-prod[open] .adm-chev{transform:rotate(180deg)}
+.adm-form{padding:14px}
+.adm .field textarea,.adm .field select{font:500 16px var(--body); padding:11px 12px; border:2px solid #000; border-radius:10px; background:#fff; color:#000; width:100%; box-sizing:border-box}
+.adm .field input{width:100%; box-sizing:border-box}
+.adm .field textarea{resize:vertical}
+.adm-acts{display:flex; flex-wrap:wrap; gap:10px; margin:4px 0 14px}
+.adm label.btn{position:relative}
+.adm .sr{position:absolute; width:1px; height:1px; opacity:0; overflow:hidden; clip:rect(0 0 0 0)}
+.adm-check{display:flex; align-items:center; gap:10px; font-weight:500; margin:0 0 14px; min-height:44px}
+.adm-check input{width:22px; height:22px}
+.adm-prev{width:100%; max-width:320px; aspect-ratio:4/3; border:3px solid #000; border-radius:12px; background:var(--yellow); display:grid; place-items:center; margin-bottom:6px}
+.adm-vazio{font-weight:700; color:#000; font-size:14px}
+.adm-prev.has-img .adm-vazio{display:none}
+.adm-prev > img{position:absolute; inset:0}
+@media (max-width:640px){ .row2{grid-template-columns:1fr} }
 </style>
 </head>
 <body>
@@ -360,7 +415,7 @@ footer a{color:#fff; text-decoration:none} footer a:hover{color:var(--yellow); t
 
 <header>
   <div class="wrap bar">
-    <a class="brand" href="#inicio" aria-label="Ki Loucura Games, início"><span class="brandmark"><svg aria-hidden="true"><use href="#logo"/></svg><img src="img/logo.png" alt="" onerror="this.remove()" onload="this.previousElementSibling.hidden=true"></span><span>Ki Loucura<small>GAMES</small></span></a>
+    <a class="brand" href="#inicio" aria-label="Ki Loucura Games, início"><span class="brandmark"><svg class="logo-svg" aria-hidden="true"><use href="#logo"/></svg><img class="logo-img" alt=""></span><span>Ki Loucura<small>GAMES</small></span></a>
     <label class="search"><span class="sr" style="position:absolute;left:-9999px">Buscar produtos</span><svg aria-hidden="true"><use href="#i-search"/></svg><input id="q" type="search" placeholder="Buscar jogo, console, acessório…"></label>
     <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
     <nav id="menu" aria-label="Principal"><ul>
@@ -378,17 +433,17 @@ footer a{color:#fff; text-decoration:none} footer a:hover{color:var(--yellow); t
   <section class="hero" style="padding:0">
     <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow">Loja em Itapevi/SP desde 2006</p>
-        <h1>Seu mundo gamer em Itapevi</h1>
-        <p>PlayStation, Xbox, Nintendo, PC gamer, jogos em mídia física e acessórios. E quando o seu equipamento der problema, a nossa assistência técnica resolve.</p>
+        <p class="eyebrow" data-bind="heroEyebrow">Loja em Itapevi/SP desde 2006</p>
+        <h1 data-bind="heroTitulo">Seu mundo gamer em Itapevi</h1>
+        <p data-bind="heroTexto">PlayStation, Xbox, Nintendo, PC gamer, jogos em mídia física e acessórios. E quando o seu equipamento der problema, a nossa assistência técnica resolve.</p>
         <div class="hero-ctas">
           <a class="btn btn-yellow" href="#vitrine" style="background:#fff">Ver a vitrine</a>
           <a class="btn btn-whats js-whats" href="#" data-msg="Oi! Vi o site da Ki Loucura Games e quero tirar uma dúvida."><svg aria-hidden="true"><use href="#i-whats"/></svg>Chamar no WhatsApp</a>
-          <a class="btn btn-insta" href="https://www.instagram.com/kiloucuragames/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-insta"/></svg>Instagram</a>
+          <a class="btn btn-insta" href="https://www.instagram.com/kiloucuragames/" data-insta target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-insta"/></svg>Instagram</a>
         </div>
       </div>
       <div class="stage" aria-hidden="true">
-        <svg class="badge" viewBox="0 0 400 400"><use href="#logo"/></svg>
+        <svg class="badge logo-svg" viewBox="0 0 400 400"><use href="#logo"/></svg><img class="badge logo-img" alt="">
         <div class="sticker s1"><svg viewBox="0 0 120 90"><use href="#a-ps"/></svg></div>
         <div class="sticker s2"><svg viewBox="0 0 120 90"><use href="#a-xb"/></svg></div>
         <div class="sticker s3"><svg viewBox="0 0 120 90"><use href="#a-setup"/></svg></div>
@@ -398,10 +453,10 @@ footer a{color:#fff; text-decoration:none} footer a:hover{color:var(--yellow); t
   </section>
 
   <div class="perks"><div class="wrap"><ul>
-    <li><svg aria-hidden="true"><use href="#i-store"/></svg><span><strong>Loja física</strong>Av. Rubens Caramez, 332</span></li>
+    <li><svg aria-hidden="true"><use href="#i-store"/></svg><span><strong>Loja física</strong><span data-bind="endereco.0">Avenida Rubens Caramez, 332</span></span></li>
     <li><svg aria-hidden="true"><use href="#i-wrench"/></svg><span><strong>Assistência técnica</strong>Consoles e computadores</span></li>
-    <li><svg aria-hidden="true"><use href="#i-clock"/></svg><span><strong>Seg a sáb, 10h às 18h30</strong>Domingo fechado</span></li>
-    <li><svg aria-hidden="true"><use href="#i-insta"/></svg><span><strong>Fale pelo Instagram</strong>@kiloucuragames</span></li>
+    <li><svg aria-hidden="true"><use href="#i-clock"/></svg><span><strong data-bind="horario.0">Segunda a sábado, das 10:00 às 18:30</strong><span data-bind="horario.1">Domingo fechado</span></span></li>
+    <li><svg aria-hidden="true"><use href="#i-insta"/></svg><span><strong>Fale pelo Instagram</strong><span data-bind="instagramAt">@kiloucuragames</span></span></li>
   </ul></div></div>
 
   <section id="categorias">
@@ -425,8 +480,8 @@ footer a{color:#fff; text-decoration:none} footer a:hover{color:var(--yellow); t
   <section id="assistencia" class="service">
     <div class="wrap service-grid">
       <div>
-        <h2 class="sec-title">Seu game deu problema? A gente resolve.</h2>
-        <p class="sec-sub">Assistência técnica especializada para consoles, controles e computadores. Traga o seu equipamento para avaliação.</p>
+        <h2 class="sec-title" data-bind="assistTitulo">Seu game deu problema? A gente resolve.</h2>
+        <p class="sec-sub" data-bind="assistTexto">Assistência técnica especializada para consoles, controles e computadores. Traga o seu equipamento para avaliação.</p>
         <ul class="svc-list">
           <li><strong>Consoles</strong>PlayStation, Xbox e Nintendo</li>
           <li><strong>Controles</strong>Botões, analógicos e bateria</li>
@@ -437,7 +492,7 @@ footer a{color:#fff; text-decoration:none} footer a:hover{color:var(--yellow); t
       </div>
       <div class="svc-art photo">
         <svg class="ph-art" viewBox="0 0 120 90" aria-hidden="true"><use href="#a-fix"/></svg>
-        <img src="img/assistencia.jpg" alt="Bancada da assistência técnica da Ki Loucura Games" onerror="this.remove()" onload="this.parentNode.classList.add('has-img')">
+        <img data-slot="assistencia" data-padrao="img/assistencia.jpg" alt="Bancada da assistência técnica da Ki Loucura Games">
       </div>
     </div>
   </section>
@@ -458,17 +513,19 @@ footer a{color:#fff; text-decoration:none} footer a:hover{color:var(--yellow); t
     <div class="wrap about-grid">
       <div>
         <h2 class="sec-title">Sobre nós</h2>
+        <div id="sobreTexto">
         <p class="sec-sub">Desde 2006, a Ki Loucura Games é a sua loja de videogames e acessórios, além de oferecer assistência técnica especializada em games. Atendemos clientes finais e lojistas em toda a Grande São Paulo.</p>
         <p class="sec-sub">Diversão e confiança em um só lugar. Explore nossa variedade de jogos, consoles e acessórios para todos os gostos e plataformas. Conte também com nossa assistência técnica para resolver qualquer problema nos seus equipamentos, com qualidade e rapidez.</p>
-        <p class="sec-sub">Seja você cliente final ou lojista, estamos prontos para atender. O Instagram <a href="https://www.instagram.com/kiloucuragames/" target="_blank" rel="noopener">@kiloucuragames</a> é o nosso canal do dia a dia: é por lá que mostramos as novidades que chegam na loja.</p>
+        <p class="sec-sub">Seja você cliente final ou lojista, estamos prontos para atender. O Instagram <a href="https://www.instagram.com/kiloucuragames/" data-insta target="_blank" rel="noopener">@kiloucuragames</a> é o nosso canal do dia a dia: é por lá que mostramos as novidades que chegam na loja.</p>
+        </div>
         <div class="hero-ctas" style="margin-top:22px">
-          <a class="btn btn-insta" href="https://www.instagram.com/kiloucuragames/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-insta"/></svg>Ver o Instagram</a>
+          <a class="btn btn-insta" href="https://www.instagram.com/kiloucuragames/" data-insta target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-insta"/></svg>Ver o Instagram</a>
           <a class="btn btn-whats js-whats" href="#" data-msg="Oi! Vi o site da Ki Loucura Games."><svg aria-hidden="true"><use href="#i-whats"/></svg>Chamar no WhatsApp</a>
         </div>
       </div>
       <div class="photo about-photo">
         <svg class="ph-art" viewBox="0 0 120 90" aria-hidden="true"><use href="#a-setup"/></svg>
-        <img src="img/loja.jpg" alt="Fachada e vitrine da loja Ki Loucura Games em Itapevi" onerror="this.remove()" onload="this.parentNode.classList.add('has-img')">
+        <img data-slot="loja" data-padrao="img/loja.jpg" alt="Fachada e vitrine da loja Ki Loucura Games em Itapevi">
       </div>
     </div>
   </section>
@@ -477,19 +534,19 @@ footer a{color:#fff; text-decoration:none} footer a:hover{color:var(--yellow); t
     <div class="wrap visit-grid">
       <div>
         <h2 class="sec-title">Venha conhecer a loja</h2>
-        <p style="font-weight:500;max-width:30em">Estamos na Avenida Rubens Caramez, em Itapevi. Passe para ver os produtos de perto ou trazer seu equipamento para a assistência.</p>
+        <p style="font-weight:500;max-width:30em" data-bind="lojaTexto">Estamos na Avenida Rubens Caramez, em Itapevi. Passe para ver os produtos de perto ou trazer seu equipamento para a assistência.</p>
         <div class="hero-ctas" style="margin-top:22px">
           <a class="btn btn-whats js-whats" href="#" data-msg="Oi! Quero saber o horário de funcionamento da loja."><svg aria-hidden="true"><use href="#i-whats"/></svg>Chamar no WhatsApp</a>
-          <a class="btn btn-light" href="https://www.instagram.com/kiloucuragames/" target="_blank" rel="noopener">Seguir no Instagram</a>
+          <a class="btn btn-light" href="https://www.instagram.com/kiloucuragames/" data-insta target="_blank" rel="noopener">Seguir no Instagram</a>
         </div>
       </div>
       <div class="info-box">
         <dl>
-          <div><dt>Endereço</dt><dd>Avenida Rubens Caramez, 332, Itapevi/SP, CEP 06635-005</dd></div>
-          <div><dt>Telefone</dt><dd><a href="tel:+551143214708">(11) 4321-4708</a></dd></div>
-          <div><dt>WhatsApp</dt><dd><a class="js-whats" href="#" data-msg="Oi!">(11) 98459-3927</a></dd></div>
-          <div><dt>Horário</dt><dd>Segunda a sábado, das 10:00 às 18:30<br>Domingo fechado</dd></div>
-          <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/kiloucuragames/" target="_blank" rel="noopener">@kiloucuragames</a></dd></div>
+          <div><dt>Endereço</dt><dd><span data-bind="endereco.0">Avenida Rubens Caramez, 332</span>, <span data-bind="endereco.1">Itapevi/SP, CEP 06635-005</span></dd></div>
+          <div><dt>Telefone</dt><dd><a href="tel:+551143214708" data-tel><span data-bind="telefone">(11) 4321-4708</span></a></dd></div>
+          <div><dt>WhatsApp</dt><dd><a class="js-whats" href="#" data-msg="Oi!"><span data-bind="whatsapp">(11) 98459-3927</span></a></dd></div>
+          <div><dt>Horário</dt><dd data-bind="horario">Segunda a sábado, das 10:00 às 18:30<br>Domingo fechado</dd></div>
+          <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/kiloucuragames/" data-insta target="_blank" rel="noopener"><span data-bind="instagramAt">@kiloucuragames</span></a></dd></div>
         </dl>
       </div>
     </div>
@@ -499,10 +556,11 @@ footer a{color:#fff; text-decoration:none} footer a:hover{color:var(--yellow); t
 <footer>
   <div class="wrap ft-top">
     <div class="ft-brand">
-      <svg aria-hidden="true"><use href="#logo"/></svg>
+      <svg class="logo-svg" aria-hidden="true"><use href="#logo"/></svg>
+      <img class="logo-img" alt="">
       <p>Loja gamer em Itapevi/SP. Jogos, consoles, acessórios e assistência técnica.</p>
       <div class="social">
-        <a href="https://www.instagram.com/kiloucuragames/" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-insta"/></svg></a>
+        <a href="https://www.instagram.com/kiloucuragames/" data-insta target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-insta"/></svg></a>
         <a class="js-whats" href="#" data-msg="Oi!" aria-label="WhatsApp" style="color:#FFD21F"><svg><use href="#i-whats"/></svg></a>
       </div>
     </div>
@@ -522,11 +580,11 @@ footer a{color:#fff; text-decoration:none} footer a:hover{color:var(--yellow); t
     <div>
       <h4>Atendimento</h4>
       <ul>
-        <li><a class="js-whats" href="#" data-msg="Oi!">WhatsApp (11) 98459-3927</a></li>
-        <li><a href="tel:+551143214708">Telefone (11) 4321-4708</a></li>
-        <li style="display:flex;gap:8px"><svg aria-hidden="true" style="width:20px;height:20px;flex:none"><use href="#i-pin"/></svg><span>Av. Rubens Caramez, 332<br>Itapevi/SP, 06635-005</span></li>
-        <li style="display:flex;gap:8px"><svg aria-hidden="true" style="width:20px;height:20px;flex:none"><use href="#i-clock"/></svg><span>Seg a sáb, 10:00 às 18:30<br>Domingo fechado</span></li>
-        <li><a href="https://www.instagram.com/kiloucuragames/" target="_blank" rel="noopener">Instagram @kiloucuragames</a></li>
+        <li><a class="js-whats" href="#" data-msg="Oi!">WhatsApp <span data-bind="whatsapp">(11) 98459-3927</span></a></li>
+        <li><a href="tel:+551143214708" data-tel>Telefone <span data-bind="telefone">(11) 4321-4708</span></a></li>
+        <li style="display:flex;gap:8px"><svg aria-hidden="true" style="width:20px;height:20px;flex:none"><use href="#i-pin"/></svg><span data-bind="endereco">Avenida Rubens Caramez, 332<br>Itapevi/SP, CEP 06635-005</span></li>
+        <li style="display:flex;gap:8px"><svg aria-hidden="true" style="width:20px;height:20px;flex:none"><use href="#i-clock"/></svg><span data-bind="horario">Segunda a sábado, das 10:00 às 18:30<br>Domingo fechado</span></li>
+        <li><a href="https://www.instagram.com/kiloucuragames/" data-insta target="_blank" rel="noopener">Instagram <span data-bind="instagramAt">@kiloucuragames</span></a></li>
       </ul>
     </div>
   </div>
@@ -549,7 +607,7 @@ footer a{color:#fff; text-decoration:none} footer a:hover{color:var(--yellow); t
   </div></div>
   <div class="wrap ft-bottom">
     <span>© <span id="ano"></span> Ki Loucura Games. Todos os direitos reservados.</span>
-    <span>CNPJ 32.147.277/0001-38</span>
+    <span>CNPJ <span data-bind="cnpj">32.147.277/0001-38</span> &nbsp;·&nbsp; <a href="#admin" class="adm-link">Área do lojista</a></span>
   </div>
 </footer>
 
@@ -634,11 +692,59 @@ footer a{color:#fff; text-decoration:none} footer a:hover{color:var(--yellow); t
   </div>
 </div>
 
+<!-- Painel do lojista (DEMONSTRAÇÃO: salva só no navegador deste aparelho) -->
+<div class="adm" id="adm" hidden role="dialog" aria-label="Painel do lojista">
+  <div class="adm-top">
+    <strong>Painel do lojista</strong>
+    <button type="button" class="btn btn-sm btn-yellow" id="admVer">Ver o site</button>
+    <button type="button" class="btn btn-sm btn-light" id="admSair">Sair</button>
+    <span class="adm-status" id="admStatus" role="status"></span>
+  </div>
+  <div class="adm-wrap">
+    <p class="adm-demo"><strong>Demonstração.</strong> O que você mudar aqui fica salvo só neste aparelho. Quem visita o site não vê as mudanças. Para valer para todos, falta ligar um banco de dados online.</p>
+
+    <form class="adm-login" id="admLogin" hidden>
+      <h2>Entrar</h2>
+      <div class="field"><label for="admPin">PIN do lojista</label><input id="admPin" type="password" inputmode="numeric" autocomplete="off"></div>
+      <p class="err" id="admErro" hidden>PIN errado. Tente de novo.</p>
+      <p class="adm-dica" id="admDica">PIN de demonstração: 1234</p>
+      <button class="btn btn-yellow" type="submit">Entrar</button>
+    </form>
+
+    <div id="admApp" hidden>
+      <div class="chips adm-tabs" role="group" aria-label="Seções do painel">
+        <button type="button" class="chip" data-tab="produtos" aria-pressed="true">Produtos</button>
+        <button type="button" class="chip" data-tab="textos" aria-pressed="false">Textos e contato</button>
+        <button type="button" class="chip" data-tab="fotos" aria-pressed="false">Fotos do site</button>
+        <button type="button" class="chip" data-tab="backup" aria-pressed="false">Cópia e PIN</button>
+      </div>
+
+      <section data-pane="produtos">
+        <p class="adm-dica">Toque em um produto para mudar nome, descrição, preço e foto. Tudo é salvo sozinho.</p>
+        <button type="button" class="btn btn-yellow" id="admNovo">+ Novo produto</button>
+        <div id="admProdutos"></div>
+      </section>
+
+      <section data-pane="textos" hidden><div id="admTextos"></div></section>
+      <section data-pane="fotos" hidden><div id="admFotos"></div></section>
+
+      <section data-pane="backup" hidden>
+        <div class="adm-box"><h3>Guardar uma cópia</h3><p>Baixa um arquivo com tudo o que você mudou (textos, preços e fotos). Guarde no celular ou no e-mail.</p><button type="button" class="btn btn-sm btn-yellow" id="admExportar">Baixar cópia</button></div>
+        <div class="adm-box"><h3>Carregar uma cópia</h3><p>Escolha um arquivo que você baixou antes.</p><label class="btn btn-sm btn-light">Escolher arquivo<input class="sr" type="file" accept="application/json,.json" id="admImportar"></label></div>
+        <div class="adm-box"><h3>Trocar o PIN</h3>
+          <form id="admPinForm"><div class="field"><label for="admPinNovo">Novo PIN (4 a 8 números)</label><input id="admPinNovo" type="password" inputmode="numeric" autocomplete="off"></div><button class="btn btn-sm btn-yellow" type="submit">Trocar PIN</button></form>
+          <p class="adm-dica">O PIN só evita que alguém mexa sem querer. Nesta demonstração ele não é uma proteção de segurança de verdade.</p></div>
+        <div class="adm-box"><h3>Voltar ao original</h3><p>Apaga tudo o que foi mudado neste aparelho.</p><button type="button" class="btn btn-sm btn-red" id="admRestaurar">Voltar ao original</button></div>
+      </section>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 /* ====== CONFIGURAÇÃO ====== */
-const WHATS = "5511984593927"; // wa.me do Instagram da loja
+let WHATS = "5511984593927"; // wa.me do Instagram da loja
 
 const CATS = [
   {id:"playstation", nome:"PlayStation", desc:"Consoles, jogos e controles", art:"a-ps", cor:"", bg:"#9DB0FF"},
@@ -652,7 +758,7 @@ const CATS = [
 
 /* price: null = "Consultar preço" (vai para o WhatsApp).
    Preços preenchidos vieram do MVP do Figma: CONFIRMAR com o cliente. */
-const PRODUTOS = [
+const PADRAO_PRODUTOS = [
   {id:1,  cat:"playstation", nome:"Controle DualSense PS5",        price:449.90,  art:"a-pad", tag:"Mais vendido", foto:"dualsense-ps5.jpg"},
   {id:2,  cat:"playstation", nome:"Console PlayStation 5",         price:null,    art:"a-ps",      foto:"ps5.jpg"},
   {id:3,  cat:"xbox",        nome:"Console Xbox Series X",         price:null,    art:"a-xb",      foto:"xbox-series-x.jpg"},
@@ -678,63 +784,158 @@ const wa = msg => `https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`;
 const catOf = id => CATS.find(c => c.id === id);
 const byId = id => PRODUTOS.find(p => p.id === id);
 const svgArt = id => `<svg viewBox="0 0 120 90" aria-hidden="true"><use href="#${id}"/></svg>`;
-/* Mostra a foto real quando o arquivo existe em img/produtos/.
-   Enquanto não existir, fica o desenho. Nada quebra. */
-const fotoArt = p => `<svg class="ph-art" viewBox="0 0 120 90" aria-hidden="true"><use href="#${p.art}"/></svg>`
-  + (p.foto ? `<img src="img/produtos/${p.foto}" alt="${p.nome}" loading="lazy" onerror="this.remove()" onload="this.parentNode.classList.add('has-img')">` : "");
+/* ====== DADOS EDITÁVEIS (painel do lojista) ======
+   DEMONSTRAÇÃO: o que o lojista altera fica salvo só no navegador DESTE aparelho.
+   Os visitantes do site NÃO veem essas mudanças. Para valer para todos,
+   falta ligar um banco de dados online. */
+const CHAVE = "kl-dados-v1";
+const PADRAO_CFG = {
+  heroEyebrow: "Loja em Itapevi/SP desde 2006",
+  heroTitulo: "Seu mundo gamer em Itapevi",
+  heroTexto: "PlayStation, Xbox, Nintendo, PC gamer, jogos em mídia física e acessórios. E quando o seu equipamento der problema, a nossa assistência técnica resolve.",
+  assistTitulo: "Seu game deu problema? A gente resolve.",
+  assistTexto: "Assistência técnica especializada para consoles, controles e computadores. Traga o seu equipamento para avaliação.",
+  sobre: "Desde 2006, a Ki Loucura Games é a sua loja de videogames e acessórios, além de oferecer assistência técnica especializada em games. Atendemos clientes finais e lojistas em toda a Grande São Paulo.\n\nDiversão e confiança em um só lugar. Explore nossa variedade de jogos, consoles e acessórios para todos os gostos e plataformas. Conte também com nossa assistência técnica para resolver qualquer problema nos seus equipamentos, com qualidade e rapidez.\n\nSeja você cliente final ou lojista, estamos prontos para atender. O Instagram @kiloucuragames é o nosso canal do dia a dia: é por lá que mostramos as novidades que chegam na loja.",
+  lojaTexto: "Estamos na Avenida Rubens Caramez, em Itapevi. Passe para ver os produtos de perto ou trazer seu equipamento para a assistência.",
+  endereco: "Avenida Rubens Caramez, 332\nItapevi/SP, CEP 06635-005",
+  telefone: "(11) 4321-4708",
+  whatsapp: "(11) 98459-3927",
+  instagram: "kiloucuragames",
+  horario: "Segunda a sábado, das 10:00 às 18:30\nDomingo fechado",
+  cnpj: "32.147.277/0001-38"
+};
+let CFG = {...PADRAO_CFG}, FOTOS = {}, PIN = "1234";
+let PRODUTOS = JSON.parse(JSON.stringify(PADRAO_PRODUTOS));
+
+function carregar(){
+  try {
+    const d = JSON.parse(localStorage.getItem(CHAVE) || "null");
+    if (!d) return;
+    if (d.cfg) CFG = {...PADRAO_CFG, ...d.cfg};
+    if (d.fotos) FOTOS = d.fotos;
+    if (Array.isArray(d.produtos)) PRODUTOS = d.produtos;
+    if (d.pin) PIN = d.pin;
+  } catch(e){}
+}
+function setStatus(t, erro){ const el = $("#admStatus"); el.textContent = t; el.classList.toggle("erro", !!erro); }
+function salvar(){
+  try {
+    localStorage.setItem(CHAVE, JSON.stringify({cfg:CFG, fotos:FOTOS, produtos:PRODUTOS, pin:PIN}));
+    setStatus("Salvo neste aparelho"); return true;
+  } catch(e){
+    setStatus("Não coube na memória do aparelho", true);
+    toast("Memória cheia. Use fotos menores ou remova alguma foto.");
+    return false;
+  }
+}
+const atrasar = (fn, ms = 300) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; };
+const H = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const srcFoto = p => p.fotoData || (p.foto ? "img/produtos/" + p.foto : "");
+const numBR = s => { let d = String(s).replace(/\D/g,""); if (d.length > 11 && d.startsWith("55")) d = d.slice(2); return d; };
+const fmtPreco = n => n.toFixed(2).replace(".", ",");
+function parsePreco(v){
+  v = String(v).trim().replace(/[R$\s]/g, "");
+  if (!v) return null;
+  if (v.includes(",")) v = v.replace(/\./g, "").replace(",", ".");
+  else if (/^\d{1,3}(\.\d{3})+$/.test(v)) v = v.replace(/\./g, "");
+  const n = parseFloat(v);
+  return isFinite(n) && n >= 0 ? Math.round(n * 100) / 100 : NaN;
+}
+
+/* Mostra a foto quando ela existe. Sem foto, fica o desenho. Nada quebra. */
+function poeImg(img, src){
+  const box = img.parentNode;
+  box.classList.remove("has-img");
+  img.onload = () => box.classList.add("has-img");
+  img.onerror = () => box.classList.remove("has-img");
+  if (src){ img.src = src; if (img.complete && img.naturalWidth) box.classList.add("has-img"); }
+  else img.removeAttribute("src");
+}
+function aplicarSlots(){
+  $$("img[data-slot]").forEach(img => poeImg(img, FOTOS[img.dataset.slot] || img.dataset.padrao));
+  const src = FOTOS.logo || "img/logo.png", t = new Image();
+  t.onload = () => { $$(".logo-img").forEach(i => i.src = src); document.documentElement.classList.add("tem-logo"); };
+  t.onerror = () => document.documentElement.classList.remove("tem-logo");
+  t.src = src;
+}
 
 /* Categorias, chips, rodapé */
 $("#carts").innerHTML = CATS.map(c => `<a class="cart ${c.cor}" href="#vitrine" data-go="${c.id}"><div class="label">${svgArt(c.art)}<h3>${c.nome}</h3><p>${c.desc}</p></div></a>`).join("");
 $("#chips").innerHTML = `<button class="chip" data-f="todos" aria-pressed="true">Tudo</button>` + CATS.map(c => `<button class="chip" data-f="${c.id}" aria-pressed="false">${c.nome}</button>`).join("");
 $("#ftCats").innerHTML = CATS.map(c => `<li><a href="#vitrine" data-go="${c.id}">${c.nome}</a></li>`).join("");
 
+/* Textos e contatos: tudo que tem data-bind recebe o valor de CFG */
+function aplicarCfg(){
+  $$("[data-bind]").forEach(el => {
+    const [campo, i] = el.dataset.bind.split(".");
+    const v = campo === "instagramAt" ? "@" + String(CFG.instagram).replace(/^@+/, "") : String(CFG[campo] ?? "");
+    const linhas = v.split("\n");
+    if (i !== undefined) el.textContent = linhas[+i] ?? "";
+    else el.innerHTML = linhas.map(H).join("<br>");
+  });
+  $("#sobreTexto").innerHTML = String(CFG.sobre).split(/\n\s*\n/).filter(p => p.trim()).map(p => `<p class="sec-sub">${H(p.trim())}</p>`).join("");
+  const n = numBR(CFG.whatsapp); if (n.length >= 10) WHATS = "55" + n;
+  $$("[data-tel]").forEach(a => a.href = "tel:+55" + numBR(CFG.telefone));
+  $$("[data-insta]").forEach(a => a.href = "https://www.instagram.com/" + String(CFG.instagram).replace(/^@+/, "") + "/");
+  $$(".js-whats").forEach(a => { a.href = wa(a.dataset.msg); a.target = "_blank"; a.rel = "noopener"; });
+}
+
 /* Vitrine */
-$("#grid").innerHTML = PRODUTOS.map(p => {
-  const c = catOf(p.cat);
-  let price, actions;
-  if (p.servico){
-    price = `<p class="price ask-price">Orçamento após avaliação</p>`;
-    actions = `<a class="act act-whats" href="${wa('Olá! Quero um orçamento de: ' + p.nome + '.')}" target="_blank" rel="noopener">Pedir orçamento</a>`;
-  } else if (p.price == null){
-    price = `<p class="price ask-price">Consultar preço</p>`;
-    actions = `<a class="act act-whats" href="${wa('Oi! Tenho interesse em: ' + p.nome + '. Qual o valor e tem disponível?')}" target="_blank" rel="noopener">Perguntar no WhatsApp</a>`;
-  } else {
-    price = `<p class="price">${brl(p.price)}</p>`;
-    actions = `<button class="act act-cart" data-add="${p.id}">Adicionar ao carrinho</button>
-               <a class="act act-whats" href="${wa('Oi! Tenho interesse em: ' + p.nome + '.')}" target="_blank" rel="noopener">Perguntar no WhatsApp</a>`;
-  }
-  return `<article class="card" data-cat="${p.cat}" data-name="${p.nome.toLowerCase()}" style="--art:${c.bg}">
-    ${p.tag ? `<span class="tag">${p.tag}</span>` : ""}
-    <div class="art photo">${fotoArt(p)}</div>
-    <div class="info"><span class="cat">${c.nome}</span><h3>${p.nome}</h3>${price}<div class="actions">${actions}</div></div>
-  </article>`;
-}).join("");
+function renderVitrine(){
+  $("#grid").innerHTML = PRODUTOS.filter(p => p.visivel !== false).map(p => {
+    const c = catOf(p.cat) || CATS[0], nome = p.nome || "Produto sem nome";
+    let price, actions;
+    if (p.servico){
+      price = `<p class="price ask-price">Orçamento após avaliação</p>`;
+      actions = `<a class="act act-whats" href="${wa('Olá! Quero um orçamento de: ' + nome + '.')}" target="_blank" rel="noopener">Pedir orçamento</a>`;
+    } else if (p.price == null){
+      price = `<p class="price ask-price">Consultar preço</p>`;
+      actions = `<a class="act act-whats" href="${wa('Oi! Tenho interesse em: ' + nome + '. Qual o valor e tem disponível?')}" target="_blank" rel="noopener">Perguntar no WhatsApp</a>`;
+    } else {
+      price = `<p class="price">${brl(p.price)}</p>`;
+      actions = `<button class="act act-cart" data-add="${p.id}">Adicionar ao carrinho</button>
+                 <a class="act act-whats" href="${wa('Oi! Tenho interesse em: ' + nome + '.')}" target="_blank" rel="noopener">Perguntar no WhatsApp</a>`;
+    }
+    return `<article class="card" data-cat="${H(p.cat)}" data-name="${H(nome.toLowerCase())}" style="--art:${c.bg}">
+      ${p.tag ? `<span class="tag">${H(p.tag)}</span>` : ""}
+      <div class="art photo"><svg class="ph-art" viewBox="0 0 120 90" aria-hidden="true"><use href="#${H(p.art)}"/></svg><img alt="${H(nome)}" loading="lazy" data-src="${H(srcFoto(p))}"></div>
+      <div class="info"><span class="cat">${H(c.nome)}</span><h3>${H(nome)}</h3>${p.desc ? `<p class="desc">${H(p.desc)}</p>` : ""}${price}<div class="actions">${actions}</div></div>
+    </article>`;
+  }).join("");
+}
+function atualizarVitrine(){
+  renderVitrine();
+  $$("#grid img[data-src]").forEach(i => poeImg(i, i.dataset.src));
+  limparCarrinho(); render(); aplicar();
+}
+function atualizarTudo(){ aplicarCfg(); aplicarSlots(); atualizarVitrine(); }
 
 let filtro = "todos";
 function aplicar(){
   const q = $("#q").value.trim().toLowerCase();
   let n = 0;
   $$(".card").forEach(el => {
-    const ok = (filtro === "todos" || el.dataset.cat === filtro) && (!q || el.dataset.name.includes(q) || catOf(el.dataset.cat).nome.toLowerCase().includes(q));
+    const ok = (filtro === "todos" || el.dataset.cat === filtro) && (!q || el.dataset.name.includes(q) || (catOf(el.dataset.cat) || CATS[0]).nome.toLowerCase().includes(q));
     el.hidden = !ok; if (ok) n++;
   });
   $("#empty").style.display = n ? "none" : "block";
-  $$(".chip").forEach(c => c.setAttribute("aria-pressed", c.dataset.f === filtro));
+  $$(".chip[data-f]").forEach(c => c.setAttribute("aria-pressed", c.dataset.f === filtro));
 }
 document.addEventListener("click", e => {
-  const chip = e.target.closest(".chip"); if (chip){ filtro = chip.dataset.f; aplicar(); }
+  const chip = e.target.closest(".chip[data-f]"); if (chip){ filtro = chip.dataset.f; aplicar(); }
   const go = e.target.closest("[data-go]"); if (go){ filtro = go.dataset.go; $("#q").value = ""; aplicar(); }
   const add = e.target.closest("[data-add]"); if (add) addCart(+add.dataset.add);
 });
 $("#q").addEventListener("input", () => { if ($("#q").value) { filtro = "todos"; } aplicar(); });
 $("#q").addEventListener("keydown", e => { if (e.key === "Enter") document.getElementById("vitrine").scrollIntoView(); });
 
-$$(".js-whats").forEach(a => { a.href = wa(a.dataset.msg); a.target = "_blank"; a.rel = "noopener"; });
+carregar();
 
 /* Carrinho */
 let cart = [];
 try { cart = JSON.parse(localStorage.getItem("kl-cart") || "[]").filter(l => byId(l.id) && byId(l.id).price != null); } catch(e){ cart = []; }
 const save = () => { try { localStorage.setItem("kl-cart", JSON.stringify(cart)); } catch(e){} };
+function limparCarrinho(){ cart = cart.filter(l => byId(l.id) && byId(l.id).price != null && !byId(l.id).servico && byId(l.id).visivel !== false); save(); }
 const total = () => cart.reduce((s,l) => s + byId(l.id).price * l.q, 0);
 const qtd = () => cart.reduce((s,l) => s + l.q, 0);
 
@@ -751,7 +952,7 @@ function render(){
   } else {
     $("#lines").innerHTML = cart.map(l => { const p = byId(l.id); return `
       <div class="line">
-        <div class="thumb" style="--art:${catOf(p.cat).bg}">${svgArt(p.art)}</div>
+        <div class="thumb" style="--art:${(catOf(p.cat) || CATS[0]).bg}; overflow:hidden">${p.fotoData ? `<img src="${H(p.fotoData)}" alt="" style="width:100%;height:100%;object-fit:cover">` : svgArt(p.art)}</div>
         <div><h4>${p.nome}</h4>
           <div class="qty"><button aria-label="Diminuir" data-q="${p.id}" data-d="-1">−</button><span>${l.q}</span><button aria-label="Aumentar" data-q="${p.id}" data-d="1">+</button>
           <button class="rm" data-q="${p.id}" data-d="-${l.q}">Remover</button></div></div>
@@ -843,7 +1044,260 @@ mb.onclick = () => { const o = nav.classList.toggle("open"); mb.setAttribute("ar
 nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { nav.classList.remove("open"); mb.setAttribute("aria-expanded", false); }));
 
 $("#ano").textContent = new Date().getFullYear();
-render(); aplicar();
+/* ====== PAINEL DO LOJISTA (DEMONSTRAÇÃO: salva só neste aparelho) ====== */
+const adm = $("#adm");
+let sessaoOk = false, aberto = new Set();
+const logado = () => { try { return sessaoOk || sessionStorage.getItem("kl-adm") === "1"; } catch(e){ return sessaoOk; } };
+
+const CAMPOS_TEXTO = [
+  {k:"heroEyebrow", l:"Frase pequena acima do título", t:"text"},
+  {k:"heroTitulo",  l:"Título principal", t:"text"},
+  {k:"heroTexto",   l:"Texto abaixo do título", t:"area"},
+  {k:"assistTitulo",l:"Título da assistência técnica", t:"text"},
+  {k:"assistTexto", l:"Texto da assistência técnica", t:"area"},
+  {k:"sobre",       l:"Sobre nós", t:"area", rows:10, dica:"Deixe uma linha em branco entre um parágrafo e outro."},
+  {k:"lojaTexto",   l:"Texto de “Venha conhecer a loja”", t:"area"},
+  {k:"endereco",    l:"Endereço", t:"area", rows:2, dica:"Linha 1: rua e número. Linha 2: cidade e CEP."},
+  {k:"horario",     l:"Horário de funcionamento", t:"area", rows:2, dica:"Linha 1: dias e horas. Linha 2: aviso (ex.: Domingo fechado)."},
+  {k:"telefone",    l:"Telefone fixo", t:"text", ph:"(11) 4321-4708"},
+  {k:"whatsapp",    l:"WhatsApp (é para onde vão os pedidos)", t:"text", ph:"(11) 90000-0000"},
+  {k:"instagram",   l:"Instagram (só o nome, sem @)", t:"text"},
+  {k:"cnpj",        l:"CNPJ", t:"text"}
+];
+const SLOTS_FOTO = [
+  {k:"logo",        l:"Logo da loja", d:"img/logo.png", dica:"Imagem quadrada, de preferência PNG com fundo transparente."},
+  {k:"assistencia", l:"Foto da assistência técnica", d:"img/assistencia.jpg", dica:"Mostre a bancada ou o técnico trabalhando."},
+  {k:"loja",        l:"Foto da loja (em “Sobre nós”)", d:"img/loja.jpg", dica:"Fachada ou vitrine da loja."}
+];
+
+/* Reduz a foto antes de guardar, para caber na memória do aparelho */
+function comprimir(file, max, png){
+  return new Promise((ok, erro) => {
+    if (!file || !file.type.startsWith("image/")) return erro(new Error("Escolha um arquivo de imagem."));
+    const fr = new FileReader();
+    fr.onerror = () => erro(new Error("Não consegui ler o arquivo."));
+    fr.onload = () => {
+      const im = new Image();
+      im.onerror = () => erro(new Error("Esse tipo de imagem não abre aqui. Use JPG ou PNG."));
+      im.onload = () => {
+        const r = Math.min(1, max / Math.max(im.width, im.height));
+        const c = document.createElement("canvas");
+        c.width = Math.max(1, Math.round(im.width * r)); c.height = Math.max(1, Math.round(im.height * r));
+        const x = c.getContext("2d");
+        if (!png){ x.fillStyle = "#fff"; x.fillRect(0, 0, c.width, c.height); }
+        x.drawImage(im, 0, 0, c.width, c.height);
+        ok(png ? c.toDataURL("image/png") : c.toDataURL("image/jpeg", .72));
+      };
+      im.src = fr.result;
+    };
+    fr.readAsDataURL(file);
+  });
+}
+
+/* ---- Abas ---- */
+function admAba(n){
+  $$("#adm [data-tab]").forEach(b => b.setAttribute("aria-pressed", b.dataset.tab === n));
+  $$("#adm [data-pane]").forEach(s => s.hidden = s.dataset.pane !== n);
+}
+$("#adm .adm-tabs").addEventListener("click", e => { const b = e.target.closest("[data-tab]"); if (b) admAba(b.dataset.tab); });
+
+/* ---- Produtos ---- */
+const resumoPreco = p => p.servico ? "Orçamento" : (p.price == null ? "Consultar preço" : brl(p.price));
+function resumo(det, p){
+  const c = catOf(p.cat) || CATS[0];
+  det.querySelector(".adm-pn b").textContent = p.nome || "Produto sem nome";
+  det.querySelector(".adm-pn small").innerHTML = `${H(resumoPreco(p))} · ${H(c.nome)}${p.visivel === false ? " · <em>escondido</em>" : ""}`;
+}
+function admLista(){
+  $("#admProdutos").innerHTML = PRODUTOS.map(p => {
+    const c = catOf(p.cat) || CATS[0];
+    const servico = p.cat === "assistencia";
+    return `<details class="adm-prod" data-id="${p.id}" ${aberto.has(p.id) ? "open" : ""}>
+      <summary>
+        <span class="adm-thumb photo" style="--art:${c.bg}"><svg class="ph-art" viewBox="0 0 120 90" aria-hidden="true"><use href="#${H(p.art)}"/></svg><img alt="" data-src="${H(srcFoto(p))}"></span>
+        <span class="adm-pn"><b>${H(p.nome || "Produto sem nome")}</b><small>${H(resumoPreco(p))} · ${H(c.nome)}${p.visivel === false ? " · <em>escondido</em>" : ""}</small></span>
+        <span class="adm-chev" aria-hidden="true">▾</span>
+      </summary>
+      <div class="adm-form">
+        <div class="field"><label>Nome do produto</label><input data-f="nome" maxlength="80" value="${H(p.nome)}"></div>
+        <div class="field"><label>Descrição curta</label><textarea data-f="desc" rows="3" maxlength="200" placeholder="Ex.: Novo, na caixa, com garantia">${H(p.desc || "")}</textarea></div>
+        <div class="row2">
+          ${servico ? `<div class="field"><label>Preço</label><p class="adm-dica" style="margin:0">Serviços mostram “Orçamento após avaliação”.</p></div>`
+                    : `<div class="field"><label>Preço (R$)</label><input data-f="price" inputmode="decimal" placeholder="Vazio = consultar" value="${p.price == null ? "" : fmtPreco(p.price)}"></div>`}
+          <div class="field"><label>Selo (opcional)</label><input data-f="tag" maxlength="24" placeholder="Ex.: Oferta" value="${H(p.tag || "")}"></div>
+        </div>
+        <div class="field"><label>Categoria</label><select data-f="cat">${CATS.map(k => `<option value="${k.id}" ${k.id === p.cat ? "selected" : ""}>${k.nome}</option>`).join("")}</select></div>
+        <div class="adm-acts">
+          <label class="btn btn-sm btn-yellow">Trocar foto<input class="sr" type="file" accept="image/*" data-up></label>
+          ${p.fotoData ? `<button type="button" class="btn btn-sm btn-light" data-act="rmfoto">Remover foto</button>` : ""}
+        </div>
+        <label class="adm-check"><input type="checkbox" data-f="visivel" ${p.visivel !== false ? "checked" : ""}> Mostrar na vitrine</label>
+        <div class="adm-acts">
+          <button type="button" class="btn btn-sm btn-light" data-act="up">↑ Subir</button>
+          <button type="button" class="btn btn-sm btn-light" data-act="down">↓ Descer</button>
+          <button type="button" class="btn btn-sm btn-red" data-act="del">Excluir</button>
+        </div>
+      </div>
+    </details>`;
+  }).join("") || `<p class="adm-dica">Nenhum produto. Toque em “+ Novo produto”.</p>`;
+  $$("#admProdutos img[data-src]").forEach(i => poeImg(i, i.dataset.src));
+}
+const gravarVitrine = atrasar(() => { salvar(); atualizarVitrine(); });
+const achar = el => { const d = el.closest("details"); return d ? [d, PRODUTOS.find(x => String(x.id) === d.dataset.id)] : []; };
+
+$("#admProdutos").addEventListener("toggle", e => { const d = e.target; if (d.matches && d.matches("details")) { d.open ? aberto.add(+d.dataset.id) : aberto.delete(+d.dataset.id); } }, true);
+$("#admProdutos").addEventListener("input", e => {
+  const el = e.target.closest("[data-f]"); if (!el) return;
+  const [det, p] = achar(el); if (!p) return;
+  const f = el.dataset.f;
+  if (f === "nome") p.nome = el.value;
+  else if (f === "desc") p.desc = el.value;
+  else if (f === "tag") p.tag = el.value;
+  else if (f === "price"){
+    const n = parsePreco(el.value);
+    if (Number.isNaN(n)){ el.setAttribute("aria-invalid", "true"); return; }
+    el.removeAttribute("aria-invalid"); p.price = n;
+  } else return;
+  resumo(det, p); gravarVitrine();
+});
+$("#admProdutos").addEventListener("change", async e => {
+  const el = e.target, [det, p] = achar(el); if (!p) return;
+  if (el.dataset.f === "price"){ if (p.price != null) el.value = fmtPreco(p.price); return; }
+  if (el.dataset.f === "visivel"){ p.visivel = el.checked; resumo(det, p); gravarVitrine(); return; }
+  if (el.dataset.f === "cat"){
+    p.cat = el.value; p.servico = el.value === "assistencia";
+    if (p.novo) p.art = catOf(p.cat).art;
+    aberto.add(p.id); admLista(); gravarVitrine(); return;
+  }
+  if (el.hasAttribute("data-up")){
+    try {
+      const url = await comprimir(el.files[0], 700, false), ant = p.fotoData;
+      p.fotoData = url;
+      if (!salvar()){ p.fotoData = ant; el.value = ""; return; }
+      aberto.add(p.id); admLista(); atualizarVitrine();
+    } catch(err){ toast(err.message); el.value = ""; }
+  }
+});
+$("#admProdutos").addEventListener("click", e => {
+  const b = e.target.closest("[data-act]"); if (!b) return;
+  const [det, p] = achar(b); if (!p) return;
+  const i = PRODUTOS.indexOf(p);
+  if (b.dataset.act === "rmfoto"){ delete p.fotoData; }
+  else if (b.dataset.act === "up" && i > 0){ [PRODUTOS[i-1], PRODUTOS[i]] = [PRODUTOS[i], PRODUTOS[i-1]]; }
+  else if (b.dataset.act === "down" && i < PRODUTOS.length - 1){ [PRODUTOS[i+1], PRODUTOS[i]] = [PRODUTOS[i], PRODUTOS[i+1]]; }
+  else if (b.dataset.act === "del"){
+    if (!confirm("Excluir “" + (p.nome || "este produto") + "”? Não dá para desfazer.")) return;
+    PRODUTOS.splice(i, 1); aberto.delete(p.id);
+  } else return;
+  salvar(); admLista(); atualizarVitrine();
+});
+$("#admNovo").onclick = () => {
+  const id = PRODUTOS.reduce((m, p) => Math.max(m, p.id), 0) + 1;
+  PRODUTOS.unshift({id, cat:"acessorios", nome:"Novo produto", desc:"", price:null, art:catOf("acessorios").art, tag:"", visivel:true, novo:true});
+  aberto.add(id); salvar(); admLista(); atualizarVitrine();
+  const d = $(`#admProdutos details[data-id="${id}"]`); if (d){ d.scrollIntoView({block:"nearest"}); const n = d.querySelector('[data-f="nome"]'); if (n){ n.focus(); n.select(); } }
+};
+
+/* ---- Textos e contato ---- */
+function admTextos(){
+  $("#admTextos").innerHTML = CAMPOS_TEXTO.map(c => {
+    const v = H(CFG[c.k] ?? "");
+    const campo = c.t === "area" ? `<textarea data-k="${c.k}" rows="${c.rows || 3}">${v}</textarea>` : `<input data-k="${c.k}" value="${v}" ${c.ph ? `placeholder="${c.ph}"` : ""}>`;
+    return `<div class="field"><label>${c.l}</label>${campo}${c.dica ? `<small class="adm-dica">${c.dica}</small>` : ""}</div>`;
+  }).join("");
+}
+const gravarTextos = atrasar(() => salvar());
+$("#admTextos").addEventListener("input", e => {
+  const k = e.target.dataset.k; if (!k) return;
+  CFG[k] = e.target.value; aplicarCfg();
+  if (k === "whatsapp") atualizarVitrine();
+  gravarTextos();
+});
+
+/* ---- Fotos do site ---- */
+function admFotos(){
+  $("#admFotos").innerHTML = SLOTS_FOTO.map(s => `
+    <div class="adm-box" data-slotbox="${s.k}">
+      <h3>${s.l}</h3>
+      <div class="adm-prev photo"><span class="adm-vazio">Sem foto ainda</span><img alt="" data-src="${H(FOTOS[s.k] || s.d)}"></div>
+      <small class="adm-dica">${s.dica}</small>
+      <div class="adm-acts">
+        <label class="btn btn-sm btn-yellow">Escolher foto<input class="sr" type="file" accept="image/*" data-upslot="${s.k}"></label>
+        ${FOTOS[s.k] ? `<button type="button" class="btn btn-sm btn-light" data-rmslot="${s.k}">Remover</button>` : ""}
+      </div>
+    </div>`).join("");
+  $$("#admFotos img[data-src]").forEach(i => poeImg(i, i.dataset.src));
+}
+$("#admFotos").addEventListener("change", async e => {
+  const k = e.target.dataset.upslot; if (!k) return;
+  try {
+    const url = await comprimir(e.target.files[0], k === "logo" ? 400 : 1000, k === "logo"), ant = FOTOS[k];
+    FOTOS[k] = url;
+    if (!salvar()){ ant ? FOTOS[k] = ant : delete FOTOS[k]; e.target.value = ""; return; }
+    admFotos(); aplicarSlots();
+  } catch(err){ toast(err.message); e.target.value = ""; }
+});
+$("#admFotos").addEventListener("click", e => {
+  const k = e.target.dataset.rmslot; if (!k) return;
+  delete FOTOS[k]; salvar(); admFotos(); aplicarSlots();
+});
+
+/* ---- Cópia, PIN, original ---- */
+$("#admExportar").onclick = () => {
+  const blob = new Blob([JSON.stringify({versao:1, cfg:CFG, fotos:FOTOS, produtos:PRODUTOS})], {type:"application/json"});
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "ki-loucura-copia.json";
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1500);
+};
+$("#admImportar").addEventListener("change", e => {
+  const f = e.target.files[0]; if (!f) return;
+  const fr = new FileReader();
+  fr.onload = () => {
+    try {
+      const d = JSON.parse(fr.result);
+      if (!Array.isArray(d.produtos) || !d.cfg || typeof d.cfg !== "object") throw 0;
+      CFG = {...PADRAO_CFG, ...d.cfg}; FOTOS = d.fotos && typeof d.fotos === "object" ? d.fotos : {};
+      PRODUTOS = d.produtos.filter(p => p && typeof p === "object").map((p, i) => ({...p, id: Number.isFinite(p.id) ? p.id : i + 1000, art: /^a-[a-z0-9-]+$/.test(p.art || "") ? p.art : "a-pad", price: typeof p.price === "number" ? p.price : null}));
+      salvar(); atualizarTudo(); admMontar(); toast("Cópia carregada");
+    } catch(err){ toast("Esse arquivo não parece uma cópia deste site."); }
+  };
+  fr.readAsText(f); e.target.value = "";
+});
+$("#admPinForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const v = $("#admPinNovo").value.trim();
+  if (!/^\d{4,8}$/.test(v)) return toast("Use de 4 a 8 números.");
+  PIN = v; salvar(); $("#admPinNovo").value = ""; toast("PIN trocado");
+});
+$("#admRestaurar").onclick = () => {
+  if (!confirm("Voltar tudo para o original? As suas mudanças neste aparelho serão apagadas.")) return;
+  try { localStorage.removeItem(CHAVE); } catch(e){}
+  CFG = {...PADRAO_CFG}; FOTOS = {}; PIN = "1234"; aberto.clear();
+  PRODUTOS = JSON.parse(JSON.stringify(PADRAO_PRODUTOS));
+  atualizarTudo(); admMontar(); setStatus("Voltou ao original");
+};
+
+/* ---- Entrada, saída e rota (#admin) ---- */
+function admMontar(){ admLista(); admTextos(); admFotos(); }
+$("#admLogin").addEventListener("submit", e => {
+  e.preventDefault();
+  if ($("#admPin").value === PIN){ sessaoOk = true; try { sessionStorage.setItem("kl-adm", "1"); } catch(err){} $("#admErro").hidden = true; rota(); }
+  else { $("#admErro").hidden = false; $("#admPin").select(); }
+});
+$("#admVer").onclick = () => { location.hash = "#inicio"; };
+$("#admSair").onclick = () => { sessaoOk = false; try { sessionStorage.removeItem("kl-adm"); } catch(e){} rota(); };
+function rota(){
+  const on = location.hash === "#admin";
+  adm.hidden = !on;
+  document.body.classList.toggle("lock", on);
+  if (!on) return;
+  const ok = logado();
+  $("#admLogin").hidden = ok; $("#admApp").hidden = !ok; $("#admSair").hidden = !ok;
+  if (ok){ admMontar(); admAba("produtos"); setStatus(""); }
+  else { $("#admPin").value = ""; $("#admErro").hidden = true; $("#admDica").hidden = PIN !== "1234"; setTimeout(() => $("#admPin").focus(), 50); }
+}
+window.addEventListener("hashchange", rota);
+
+atualizarTudo(); rota();
 </script>
 </body>
 </html>
